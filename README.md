@@ -1,5 +1,36 @@
 # Exam #N: "Exam Title"
-## Student: s123456 LASTNAME FIRSTNAME 
+## Student: s354269 ONORI TOMMASO
+
+## Database Tables
+
+- Table `Student(SID, Name, Surname, Email, HashedPassword, Salt, PlanType)`
+- Table `Courses(CID, Name, Credits, maxStudents,	PreparatoryCourse)`
+- Table `StudyPlan(SID, CID)`
+- Table `CourseIncompatibilities(CID, IncompatibleCourseID)`
+
+## Data Models
+
+Student: {
+  SID: Number,
+  Name: String,
+  Surname: String,
+  Email: String,
+  studyPlan: StudyPlan
+}
+
+Courses: {
+  CID: Number,
+  Name: String,
+  Credits: Number,
+  maxStudents: Number,
+  PreparatoryCourse: String,
+  IncompatibleCourses: []
+}
+
+StudyPlan: {
+  Courses: [],
+  Type: Enum("Full-Time, "Part-Time")
+}
 
 ## React Client Application Routes
 
@@ -9,22 +40,18 @@
 
 ## API Server
 
-- POST `/api/something`
-  - request parameters and request body content
-  - response body content
-- GET `/api/something`
-  - request parameters
-  - response body content
-- POST `/api/something`
-  - request parameters and request body content
-  - response body content
-- ...
+GET(api/session/current) -> retrieve current session
+GET(api/courses) -> list of courses
+GET(api/courses/:id) -> course element
+GET(api/studyplan) -> student's study plan
 
-## Database Tables
+POST(api/session) -> login
+- req parameters ?
+- res body ?
+POST(api/studyplan) -> edit study plan
 
-- Table `users` - contains xx yy zz
-- Table `something` - contains ww qq ss
-- ...
+DELETE(api/session/current) -> logout
+DELETE(api/studyplan)
 
 ## Main React Components
 
