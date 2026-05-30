@@ -3,7 +3,7 @@
 
 ## Database Tables
 
-- Table `Student(SID, Name, Surname, Email, HashedPassword, Salt, PlanType)`
+- Table `Student(SID, Name, Surname, Email, PlanType, HashedPassword, Salt)`
 - Table `Courses(CID, Name, Credits, maxStudents,	PreparatoryCourse)`
 - Table `StudyPlan(SID, CID)`
 - Table `CourseIncompatibilities(CID, IncompatibleCourseID)`
@@ -11,7 +11,7 @@
 ## Data Models
 
 Student: {
-  SID: Number,
+  SID: String,
   Name: String,
   Surname: String,
   Email: String,
@@ -19,7 +19,7 @@ Student: {
 }
 
 Courses: {
-  CID: Number,
+  CID: String,
   Name: String,
   Credits: Number,
   maxStudents: Number,
@@ -28,15 +28,10 @@ Courses: {
 }
 
 StudyPlan: {
+  Credits: Number
   Courses: [],
   Type: Enum("Full-Time, "Part-Time")
 }
-
-## React Client Application Routes
-
-- Route `/`: page content and purpose
-- Route `/something/:param`: page content and purpose, param specification
-- ...
 
 ## API Server
 
@@ -46,12 +41,20 @@ GET(api/courses/:id) -> course element
 GET(api/studyplan) -> student's study plan
 
 POST(api/session) -> login
-- req parameters ?
-- res body ?
+- req: { username: "student@polito.it", password: "password123" }
+- res: { id: 1, username: "student@polito.it", name: "John", planType: "Full-Time" }
+
 POST(api/studyplan) -> edit study plan
+- req: { planType: "Full-Time", courses: ["02GOLOV", "01SQJOV", ...] }
+- res: {200 OK}
 
 DELETE(api/session/current) -> logout
 DELETE(api/studyplan)
+
+## React Client Application Routes
+
+- Route `/`: List of Coureses. If logged-in the study plan
+- Route `*`: Fallback page (home page)
 
 ## Main React Components
 
