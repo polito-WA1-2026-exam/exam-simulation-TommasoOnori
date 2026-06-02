@@ -6,6 +6,7 @@ import { useState } from 'react';
 import Navigation from './components/Navigation';
 import Home from './components/Home';
 import LoginForm from './components/LoginForm';
+import StudyPlan from './components/StudyPlan';
 import API from './API';
 
 function AppLayout({ loggedIn, user, handleLogout }) {
@@ -20,7 +21,6 @@ function AppLayout({ loggedIn, user, handleLogout }) {
   );
 }
 
-function StudyPlan() { return <h2>Private Area - My Study Plan</h2>; }
 function NotFound() { return <h2 className="text-danger">Error 404 - Page Not Found</h2>; }
 
 function App() {
@@ -55,7 +55,7 @@ function App() {
 
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginForm login={handleLogin} />} />
-          <Route path="/studyPlan" element={<StudyPlan />} />
+          <Route path="/studyPlan" element={<StudyPlan user={user} />} />
           <Route path="*" element={<NotFound />} />
 
         </Route>

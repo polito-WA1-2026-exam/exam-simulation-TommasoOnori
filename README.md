@@ -44,7 +44,7 @@ POST(api/session) -> login
 - req: { username: "student@polito.it", password: "password123" }
 - res: { id: 1, username: "student@polito.it", name: "John", planType: "Full-Time" }
 
-POST(api/studyplan) -> edit study plan
+PUT(api/studyplan) -> edit study plan
 - req: { planType: "Full-Time", courses: ["02GOLOV", "01SQJOV", ...] }
 - res: { 200 OK }
 
