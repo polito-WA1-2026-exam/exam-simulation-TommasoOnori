@@ -3,6 +3,7 @@ import sqlite3 from 'sqlite3';
 import cors from 'cors';
 
 import session from 'express-session';
+import passport from './passport.js';
 
 // Init Express
 const app = express();

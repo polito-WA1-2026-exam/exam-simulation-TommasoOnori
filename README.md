@@ -46,7 +46,7 @@ POST(api/session) -> login
 
 POST(api/studyplan) -> edit study plan
 - req: { planType: "Full-Time", courses: ["02GOLOV", "01SQJOV", ...] }
-- res: {200 OK}
+- res: { 200 OK }
 
 DELETE(api/session/current) -> logout
 DELETE(api/studyplan)
